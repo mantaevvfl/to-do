@@ -1,0 +1,11 @@
+.completed-list {
+    background-color: lightgreen;
+    text-decoration: line-through;
+}
+
+#drop-target {
+    width: 100px;
+    height: 100px;
+    background-color: lightcoral;
+    border-radius: 10%;
+}
