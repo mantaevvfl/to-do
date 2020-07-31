@@ -7,4 +7,5 @@ html {
 body {
     background: linear-gradient(darkblue, aqua);
     color: white;
+    box-sizing: border-box;
 }

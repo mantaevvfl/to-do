@@ -1,37 +1,42 @@
 <div class="file-drop">
-    <h5>Drop File</h5> 
+    <h5>Drop File</h5>
     <div id="drop-target" (dragover)="dragOverHandler($event)" (drop)="dropHandler($event)"></div>
     <!-- TIP: Any event in angular is surrounded by parentheses ex. (drop) -->
 </div>
 
+<div class="list-container">
 
-<div>
-    <label for="taskTitle">Title</label>
-    <input type="text" id="taskTitle" #taskTitle />
-    <label for="taskDescription">Description</label>
-    <input type="text" id="taskDescription" #taskDescription />
-    
-    <button type="submit" (click)="addTask(taskTitle.value, taskDescription.value)">Submit</button>
+    <div class="task-form">
+        <input type="text" id="taskTitle" #taskTitle placeholder="Enter title..."/>
+        <input type="text" id="taskDescription" #taskDescription placeholder="Enter description..."/>
+        
+        <button type="submit" (click)="addTask(taskTitle.value, taskDescription.value)">&#43;</button>
+    </div>
+
+    <!-- The to-do list -->
+    <ul class="to-do-list">
+        <div *ngFor="let task of taskList">
+            <li *ngIf="!task.completed">
+                <div>
+                    <h4>{{task.title}}</h4>
+                    <button (click)="removeTask(task.title)"><i class="material-icons">delete_outline</i></button>
+                    <button (click)="taskCompleted(task)"><i class="material-icons">done_outline</i></button>
+                </div>
+                <p>{{task.description}}</p>
+            </li>
+        </div>
+    </ul>
+
+    <!-- The task(s) completed list -->
+    <ul class="completed-list">
+        <div *ngFor="let task of taskList">
+            <li *ngIf="task.completed">
+                <div>
+                    <h4>{{task.title}}</h4>
+                </div>
+                <p>{{task.description}}</p>
+            </li>
+        </div>
+    </ul>
+
 </div>
-
-<!-- The list -->
-<ul class="to-do-list">
-    <div *ngFor="let task of taskList">
-        <li *ngIf="!task.completed">
-            <h4>{{task.title}}</h4>
-            <p>{{task.description}}</p>
-            <button (click)="removeTask(task.title)">Delete</button>
-            <button (click)="taskCompleted(task)">Completed</button>
-        </li>
-    </div>
-</ul>
-
-<!-- The tasks completed list -->
-<ul class="completed-list">
-    <div *ngFor="let task of taskList">
-        <li *ngIf="task.completed">
-            <h4>{{task.title}}</h4>
-            <p>{{task.description}}</p>
-        </li>
-    </div>
-</ul>

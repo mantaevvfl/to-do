@@ -1,6 +1,58 @@
 .completed-list {
     background-color: lightgreen;
-    text-decoration: line-through;
+}
+
+.file-drop {
+    float: right;
+    text-align: center;
+}
+
+.list-container {
+    background-color: white;
+    border-radius: 5%;
+    width: 500px;
+    height: 500px;
+    color: black;
+    overflow: auto;
+    box-shadow: 25px 25px rgb(0, 0, 0, 0.10);
+    margin: 0 auto;
+}
+
+.list-container input[type=text] {
+    width: 75%;
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.to-do-list, .completed-list {
+    list-style-type: none;
+    padding-left: 15px;
+}
+
+.to-do-list h4 {
+    display: inline;
+}
+
+.to-do-list button {
+    float: right;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.list-container button[type=submit] {
+    /* remove default style */
+    appearance: none;
+
+    border: none;
+    background-color: darkblue;
+    color: white;
+    padding: 10px;
+    border-radius: 25%;
+    outline: none;
+
 }
 
 #drop-target {
@@ -8,4 +60,5 @@
     height: 100px;
     background-color: lightcoral;
     border-radius: 10%;
+    border: 2px solid white;
 }

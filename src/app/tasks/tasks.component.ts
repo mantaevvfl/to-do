@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from '../task'
+import { Task } from '../task';
+
 
 @Component({
   selector: 'app-tasks',
@@ -18,6 +19,8 @@ export class TasksComponent implements OnInit {
   addTask(taskTitle: string, taskDescrp: string) {
     let task = new Task(taskTitle, taskDescrp);
     this.taskList.push(task);
+    this.clearInputFields();
+
   }
 
   removeTask(taskTitle: string) {
@@ -26,6 +29,11 @@ export class TasksComponent implements OnInit {
         this.taskList.splice(i, 1);
       }
     }
+  }
+
+  clearInputFields() {
+    (document.getElementById("taskTitle") as HTMLInputElement).value = "";
+    (document.getElementById("taskDescription") as HTMLInputElement).value = "";
   }
 
   taskCompleted(task: Task) {
@@ -52,8 +60,6 @@ export class TasksComponent implements OnInit {
       }
     }
     
-
-
   }
 
 }
